@@ -56,6 +56,7 @@
                            Margin="0,0,0,15"/>
                 
                 <Button Content="Dashboard"
+                        Click="DashboardButton_Click"
                         Margin="0,0,0,10"/>
 
                 <Button Content="Projects"
@@ -64,11 +65,12 @@
                 <Button Content="Create Video"
                         Margin="0,0,0,10"/>
 
+                <Button Content="Video Library"
+                        Margin="0,0,0,10"/>
+                
                 <Button Content="Settings"
                         Margin="0,0,0,10"/>
                 
-                <Button Content="Video Library"
-                        Margin="0,0,0,10"/>
 
             </StackPanel>
 

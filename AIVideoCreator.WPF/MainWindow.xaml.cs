@@ -20,5 +20,12 @@ namespace AIVideoCreator.WPF
         {
             InitializeComponent();
         }
+
+
+        private void DashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            MessageBox.Show("Dashboard button clicked!");
+        }
     }
 }
