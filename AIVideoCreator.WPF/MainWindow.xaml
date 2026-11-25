@@ -91,6 +91,8 @@
                            Foreground="#858B9B"
                            Margin="0,8,0,0"/>
 
+                <ListBox ItemsSource="{Binding Projects}"/>
+
             </StackPanel>
 
         </Grid>

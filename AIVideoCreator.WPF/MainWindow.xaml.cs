@@ -8,24 +8,34 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AIVideoCreator.WPF.ViewModels;
+
+
 
 namespace AIVideoCreator.WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+
+        private int Counter { get; set; } = 1;
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
 
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            MessageBox.Show("Dashboard button clicked!");
+            var viewModel = (MainViewModel)DataContext;
+
+            viewModel.Projects.Add($"new project {Counter}");
+
+            Counter++;
         }
     }
 }
