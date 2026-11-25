@@ -18,8 +18,6 @@ namespace AIVideoCreator.WPF
     public partial class MainWindow : Window
     {
 
-        private int Counter { get; set; } = 1;
-
 
         public MainWindow()
         {
@@ -28,14 +26,5 @@ namespace AIVideoCreator.WPF
             DataContext = new MainViewModel();
         }
 
-
-        private void DashboardButton_Click(object sender, RoutedEventArgs e)
-        {
-            var viewModel = (MainViewModel)DataContext;
-
-            viewModel.Projects.Add($"new project {Counter}");
-
-            Counter++;
-        }
     }
 }
