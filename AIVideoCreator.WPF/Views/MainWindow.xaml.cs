@@ -12,7 +12,7 @@ using AIVideoCreator.WPF.ViewModels;
 
 
 
-namespace AIVideoCreator.WPF
+namespace AIVideoCreator.WPF.Views
 {
 
     public partial class MainWindow : Window
