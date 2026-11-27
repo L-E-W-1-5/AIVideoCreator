@@ -19,11 +19,11 @@ namespace AIVideoCreator.WPF.Views
     {
 
 
-        public MainWindow()
+        public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel();
+            DataContext = mainViewModel;
         }
 
     }

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using AIVideoCreator.WPF.Models;
+using AIVideoCreator.WPF.Services;
 
 namespace AIVideoCreator.WPF.ViewModels
 {
@@ -43,12 +44,16 @@ namespace AIVideoCreator.WPF.ViewModels
 
         public RelayCommand RemoveProjectCommand { get; }
 
-        public RelayCommand GenerateVideoCommand { get; }
+        public AsyncRelayCommand GenerateVideoCommand { get; }
 
         private int _counter = 1;
 
-        public MainViewModel()
+        private readonly IVideoService _videoService;
+
+        public MainViewModel(IVideoService videoService)
         {
+            _videoService = videoService;
+
             DashboardCommand = new RelayCommand(() =>
             {
                 WelcomeMessage = "Dashboard Clicked!";
@@ -58,13 +63,13 @@ namespace AIVideoCreator.WPF.ViewModels
 
             RemoveProjectCommand = new RelayCommand(RemoveProject, CanRemoveProject);
 
-            GenerateVideoCommand = new RelayCommand(GenerateVideo, CanGenerateVideo);
+            GenerateVideoCommand = new AsyncRelayCommand(GenerateVideo, CanGenerateVideo);
         }
 
 
-        private void GenerateVideo()
+        private async Task GenerateVideo()
         {
-            WelcomeMessage = $"Generating video: {VideoTitle}";
+            WelcomeMessage = await _videoService.GenerateVideo(VideoTitle);
         }
 
         private bool CanGenerateVideo()
@@ -95,6 +100,8 @@ namespace AIVideoCreator.WPF.ViewModels
             _counter++;
 
             AddProjectCommand.NotifyCanExecuteChanged();
+
+            RemoveProjectCommand.NotifyCanExecuteChanged();
         }
 
         private bool CanAddProject()
